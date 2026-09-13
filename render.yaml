@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: niagaku-backend
+    env: docker
+    plan: free
+    region: singapore
