@@ -1,4 +1,4 @@
-FROM php:8.3-cli
+FROM php:8.4-cli
 
 # Install system dependencies and PostgreSQL development libraries
 RUN apt-get update && apt-get install -y \
@@ -19,8 +19,8 @@ WORKDIR /var/www/html
 # Copy project files
 COPY . .
 
-# Install composer dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Install composer dependencies ignoring platform requirements constraints
+RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
 
 # Storage permissions
 RUN chmod -R 777 storage bootstrap/cache
